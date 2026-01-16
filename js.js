@@ -1,5 +1,5 @@
 //fetch() = lekéri az apit az url-ről await meg addig nem futtatja tovább a kódot ami nem küld vissza üzenet
-const apiKey ="863242cfb2b1d357е6093d9a4df19a4b";
+const apiKey ="a641035c14856c0e592b7231c61a42cd";
 const apiUrl ="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
@@ -7,8 +7,9 @@ const weatherIcon = document.querySelector(".weather-icon");
 
 
 async function checkWeather(city) {
-    const response = await fetch(apiUrl + city + '&appid=${apiKey}');
-
+    const response = await fetch(`${apiUrl}${city}&appid=${apiKey}`);
+    const data = await response.json(); //meg várja az adatot(fetch) és feldolgoza json-ra
+    
     if(response.status == 404) {
         document.querySelector(".error").style.display = "block";
         document.querySelector(".weather").style.display = "none";
@@ -17,25 +18,25 @@ async function checkWeather(city) {
         weatherIcon.src = "images/clouds.png";
     } else if(data.weather[0].main == "Clear") {
         weatherIcon.src = "images/clear.png";
-    } else if(data.weather[0].main == "rain") {
+    } else if(data.weather[0].main == "Rain") {
         weatherIcon.src = "images/rain.png"
     } else if(data.weather[0].main == "Drizzle") {
         weatherIcon.src = "images/drizzle.png";
     } else if(data.weather[0].main == "Mist") {
         weatherIcon.src = "images/mist.png";
     }
-    document.querySelector(".weather").computedStyleMap.display = "block";
+    document.querySelector(".weather").style.display = "block";
     document.querySelector(".error").style.display = "none";
-}        
-    }
-    var data = await response.json(); //meg várja az adatot(fetch) és feldolgoza json-ra
-  
+    
     document.querySelector(".city").innerHTML = data.name;
     document.querySelector(".temp").innerHTML = Math.round(data.main.temp)  + "°C";
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + "km/h"; //innerHTML = ide irjuk hogy az api key-nek a az adati nevet
 
+    }        
+}
+
 searchBtn.addEventListener("click",function() {
     checkWeather(searchBox.value);
-})
+});
 checkWeather(); //azonnal fusson a lekérés a (fuction)
