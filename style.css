@@ -5,12 +5,24 @@
     box-sizing: border-box;
 }
 body {
-    background-color: grey;
+    background-color: lightgray;
+    transition: 1s;
+}
+body.dark {
+    background-color:  black;
 }
 .card {
     width: 98%;
     max-width: 470px;
-    background: linear-gradient(135deg, #00feba, #5b548a);
+
+
+    background: rgba(255, 255, 255, .1);
+    border-radius: 20px;
+    border: 2px solid rgba(1, 1, 1, 0.5);
+    border-right: 2px solid rgba(255, 255, 255, .2);
+    border-bottom: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(10px);
+    box-shadow:  10px;
     color: #fff;
     margin: 100px auto 0;
     border-radius: 20px;

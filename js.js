@@ -4,6 +4,8 @@ const apiUrl ="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
+const themBtn = document.querySelector(".dark-ligth");
+const body = document.body;
 
 
 async function checkWeather(city) {
@@ -40,3 +42,7 @@ searchBtn.addEventListener("click",function() {
     checkWeather(searchBox.value);
 });
 checkWeather(); //azonnal fusson a lekérés a (fuction)
+
+themBtn.addEventListener("click", function () {
+    document.body.classList.toggle("dark");
+});
