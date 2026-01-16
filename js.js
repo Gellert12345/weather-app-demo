@@ -1,5 +1,5 @@
 //fetch() = lekéri az apit az url-ről await meg addig nem futtatja tovább a kódot ami nem küld vissza üzenet
-const apiKey ="a641035c14856c0e592b7231c61a42cd";
+const apiKey ="your own api from openweathermap";
 const apiUrl ="https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
